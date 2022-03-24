@@ -31,94 +31,26 @@
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200 divide-solid">
-                    <tr>
+                    <tr v-for="post in posts">
                         <td
                             class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900"
                         >
-                            1
+                            {{ post.id }}
                         </td>
                         <td
                             class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900"
                         >
-                            A
+                            {{ post.title }}
                         </td>
                         <td
                             class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900"
                         >
-                            Lorem ipsum dolor sit amet, consectetur adipisicing
-                            elit, sed do eiusmod tempor incididunt ut labore et
-                            dolore magna aliqua. Ut enim ad minim veniam, quis
-                            nostrud exercitation ullamco laboris nisi ut aliquip
-                            ex ea commodo consequat. Duis aute irure dolor in
-                            reprehenderit in voluptate velit esse cillum dolore
-                            eu fugiat nulla pariatur. Excepteur sint occaecat
-                            cupidatat non proident, sunt in culpa qui officia
-                            deserunt mollit anim id est laborum.
+                            {{ post.content }}
                         </td>
                         <td
                             class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900"
                         >
-                            2022-01-01 13:43:47
-                        </td>
-                    </tr>
-                    <tr>
-                        <td
-                            class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900"
-                        >
-                            2
-                        </td>
-                        <td
-                            class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900"
-                        >
-                            B
-                        </td>
-                        <td
-                            class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900"
-                        >
-                            Lorem ipsum dolor sit amet, consectetur adipisicing
-                            elit, sed do eiusmod tempor incididunt ut labore et
-                            dolore magna aliqua. Ut enim ad minim veniam, quis
-                            nostrud exercitation ullamco laboris nisi ut aliquip
-                            ex ea commodo consequat. Duis aute irure dolor in
-                            reprehenderit in voluptate velit esse cillum dolore
-                            eu fugiat nulla pariatur. Excepteur sint occaecat
-                            cupidatat non proident, sunt in culpa qui officia
-                            deserunt mollit anim id est laborum.
-                        </td>
-                        <td
-                            class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900"
-                        >
-                            2022-01-02 14:43:47
-                        </td>
-                    </tr>
-                    <tr>
-                        <td
-                            class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900"
-                        >
-                            3
-                        </td>
-                        <td
-                            class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900"
-                        >
-                            C
-                        </td>
-                        <td
-                            class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900"
-                        >
-                            Lorem ipsum dolor sit amet, consectetur adipisicing
-                            elit, sed do eiusmod tempor incididunt ut labore et
-                            dolore magna aliqua. Ut enim ad minim veniam, quis
-                            nostrud exercitation ullamco laboris nisi ut aliquip
-                            ex ea commodo consequat. Duis aute irure dolor in
-                            reprehenderit in voluptate velit esse cillum dolore
-                            eu fugiat nulla pariatur. Excepteur sint occaecat
-                            cupidatat non proident, sunt in culpa qui officia
-                            deserunt mollit anim id est laborum.
-                        </td>
-                        <td
-                            class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900"
-                        >
-                            2022-01-03 15:43:47
+                            {{ post.created_at }}
                         </td>
                     </tr>
                 </tbody>
@@ -126,3 +58,24 @@
         </div>
     </div>
 </template>
+
+<script>
+export default {
+    data() {
+        return {
+            posts: [],
+        };
+    },
+    mounted() {
+        this.fetchPosts();
+    },
+    methods: {
+        fetchPosts() {
+            axios
+                .get("/api/posts")
+                .then((response) => (this.posts = response.data))
+                .catch((error) => console.log(error));
+        },
+    },
+};
+</script>
