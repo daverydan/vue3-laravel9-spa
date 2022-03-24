@@ -21512,10 +21512,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* KEYED_FRAGMENT */
   ))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Pagination, {
     data: $setup.posts,
-    onPaginationChangePage: $setup.getPosts
+    onPaginationChangePage: _cache[1] || (_cache[1] = function (page) {
+      return $setup.getPosts(page, $setup.selectedCategory);
+    })
   }, null, 8
   /* PROPS */
-  , ["data", "onPaginationChangePage"])])])], 64
+  , ["data"])])])], 64
   /* STABLE_FRAGMENT */
   );
 }
