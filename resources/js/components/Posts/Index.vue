@@ -1,7 +1,7 @@
 <template>
-    <div class="overflow-hidden overflow-x-auto bg-white border-gray-200 rounded-lg">
+    <div class="overflow-hidden overflow-x-auto bg-white border sm:rounded-lg">
         <div class="min-w-full align-middle">
-            <table class="min-w-full divide-y divide-gray-200 border">
+            <table class="min-w-full divide-y divide-gray-200">
                 <thead>
                     <tr>
                         <th class="px-6 py-3 bg-gray-50 text-left">
