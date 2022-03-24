@@ -674,9 +674,6 @@ select {
 .block {
   display: block;
 }
-.inline-block {
-  display: inline-block;
-}
 .flex {
   display: flex;
 }
@@ -841,12 +838,6 @@ select {
 .rounded {
   border-radius: 0.25rem;
 }
-.rounded-sm {
-  border-radius: 0.125rem;
-}
-.rounded-lg {
-  border-radius: 0.5rem;
-}
 .rounded-l-md {
   border-top-left-radius: 0.375rem;
   border-bottom-left-radius: 0.375rem;
@@ -917,15 +908,6 @@ select {
 }
 .p-2 {
   padding: 0.5rem;
-}
-.p-0 {
-  padding: 0px;
-}
-.p-10 {
-  padding: 2.5rem;
-}
-.p-1 {
-  padding: 0.25rem;
 }
 .px-4 {
   padding-left: 1rem;
