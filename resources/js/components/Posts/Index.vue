@@ -4,7 +4,7 @@
             v-model="selectedCategory"
             class="block mt-1 w-full sm:w-1/4 rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
         >
-            <option value="" selected>-- Filter by category --</option>
+            <option value="" selected>Filter by category</option>
             <option
                 v-for="category in categories"
                 :value="category.id"
@@ -90,7 +90,7 @@
 </template>
 
 <script>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, watch } from "vue";
 import usePosts from "../../composables/posts";
 import useCategories from "../../composables/categories";
 
@@ -99,11 +99,17 @@ export default {
         const selectedCategory = ref("");
         const { posts, getPosts } = usePosts();
         const { categories, getCategories } = useCategories();
+
         onMounted(() => {
             getPosts();
             getCategories();
         });
-        return { posts, getPosts, categories };
+
+        watch(selectedCategory, (current, previous) => {
+            getPosts(1, current);
+        });
+
+        return { posts, getPosts, categories, selectedCategory };
     },
 };
 </script>
