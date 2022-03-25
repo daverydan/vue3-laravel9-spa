@@ -1,4 +1,4 @@
-import { ref } from "vue";
+import { ref, inject } from "vue";
 import { useRouter } from "vue-router";
 
 export default function usePosts() {
@@ -8,6 +8,7 @@ export default function usePosts() {
     const router = useRouter();
     const validationErrors = ref({});
     const isLoading = ref(false);
+    const swal = inject("$swal");
 
     const getPosts = async (
         page = 1,
@@ -58,6 +59,12 @@ export default function usePosts() {
             .post("/api/posts", serializedPost)
             .then(() => {
                 router.push({ name: "posts.index" });
+                swal({
+                    icon: "success",
+                    title: "Post Saved",
+                    timer: 1500,
+                    showConfirmButton: false,
+                });
             })
             .catch((error) => {
                 // "?" optional chaining operator = if error.response is null, ignore(prevents an error)
@@ -85,6 +92,12 @@ export default function usePosts() {
             .put("/api/posts/" + post.id, post)
             .then(() => {
                 router.push({ name: "posts.index" });
+                swal({
+                    icon: "success",
+                    title: "Post Updated",
+                    timer: 1500,
+                    showConfirmButton: false,
+                });
             })
             .catch((error) => {
                 // "?" optional chaining operator = if error.response is null, ignore(prevents an error)
