@@ -35,8 +35,17 @@ export default function usePosts() {
         if (isLoading.value) return;
         isLoading.value = true;
         validationErrors.value = {};
+
+        // dealing with image upload
+        let serializedPost = new FormData();
+        for (let item in post) {
+            if (post.hasOwnProperty(item)) {
+                serializedPost.append(item, post[item]);
+            }
+        }
+
         axios
-            .post("/api/posts", post)
+            .post("/api/posts", serializedPost)
             .then(() => {
                 router.push({ name: "posts.index" });
             })
