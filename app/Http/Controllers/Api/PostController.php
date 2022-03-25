@@ -24,7 +24,7 @@ class PostController extends Controller
                 $query->where('category_id', request('category'));
             })
             ->orderBy($orderColumn, $orderDirection)
-            ->paginate(5);
+            ->paginate(7);
         return PostResource::collection($posts);
     }
 
