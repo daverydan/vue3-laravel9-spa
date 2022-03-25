@@ -23,4 +23,6 @@ use Illuminate\Support\Facades\Route;
 
 // require __DIR__.'/auth.php';
 
-Route::view('/', 'dashboard')->name('dashboard');
+Route::view('/{any?}', 'dashboard')
+    ->name('dashboard')
+    ->where('any', '.*');
