@@ -37,4 +37,19 @@ class PostController extends Controller
         $post = Post::create($request->validated());
         return new PostResource($post);
     }
+
+    public function show(Post $post)
+    {
+        return new PostResource($post);
+    }
+
+    public function update(Post $post, StorePostRequest $request)
+    {
+        // if ($request->hasFile('thumbnail')) {
+        //     $filename = $request->file('thumbnail')->getClientOriginalName();
+        //     info($filename);
+        // }
+        $post->update($request->validated());
+        return new PostResource($post);
+    }
 }
