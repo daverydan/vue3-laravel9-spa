@@ -25,14 +25,14 @@
                             class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex"
                         >
                             <router-link
-                                to="/"
+                                :to="{ name: 'posts.index' }"
                                 active-class="border-b-2 border-indigo-400"
                                 class="inline-flex items-center px-1 pt-1 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-indigo-700 transition duration-150 ease-in-out"
                             >
                                 Posts
                             </router-link>
                             <router-link
-                                to="/posts/create"
+                                :to="{ name: 'posts.create' }"
                                 active-class="border-b-2 border-indigo-400"
                                 class="inline-flex items-center px-1 pt-1 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-indigo-700 transition duration-150 ease-in-out"
                             >
@@ -56,7 +56,7 @@
         <!-- Page Content -->
         <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="py-12">
-               <!-- sm:px-6 lg:px-8 -->
+                <!-- sm:px-6 lg:px-8 -->
                 <div class="w-full">
                     <div
                         class="bg-white overflow-hidden shadow-sm sm:rounded-lg"
