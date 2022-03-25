@@ -5,6 +5,7 @@ export default function usePosts() {
     // const posts = ref([])
     const posts = ref({});
     const router = useRouter();
+    const validationErrors = ref({});
 
     const getPosts = async (
         page = 1,
@@ -35,8 +36,13 @@ export default function usePosts() {
             .then(() => {
                 router.push({ name: "posts.index" });
             })
-            .catch((error) => console.log(error));
+            .catch((error) => {
+                // "?" optional chaining operator = if error.response is null, ignore(prevents an error)
+                if (error.response?.data) {
+                    validationErrors.value = error.response.data.errors;
+                }
+            });
     };
 
-    return { posts, getPosts, storePost };
+    return { posts, getPosts, storePost, validationErrors };
 }
