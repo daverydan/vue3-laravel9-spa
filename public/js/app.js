@@ -21452,7 +21452,7 @@ var _hoisted_7 = {
   "class": "px-6 py-3 bg-gray-50 text-left"
 };
 var _hoisted_8 = {
-  "class": "select-none ml-1"
+  "class": "select-none text-sm ml-1"
 };
 
 var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
@@ -21467,7 +21467,7 @@ var _hoisted_10 = {
   "class": "px-6 py-3 bg-gray-50 text-left"
 };
 var _hoisted_11 = {
-  "class": "select-none ml-1"
+  "class": "select-none text-sm ml-1"
 };
 
 var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
@@ -21482,7 +21482,7 @@ var _hoisted_13 = {
   "class": "px-6 py-3 bg-gray-50 text-left"
 };
 var _hoisted_14 = {
-  "class": "select-none ml-1"
+  "class": "select-none text-sm ml-1"
 };
 var _hoisted_15 = {
   "class": "bg-white divide-y divide-gray-200 divide-solid"
@@ -21527,7 +21527,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $setup.updateOrdering('id');
     })
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["leading-4 font-medium text-gray-500 uppercase tracking-wider", {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider", {
       'font-bold text-blue-600': $setup.orderColumn === 'id'
     }])
   }, " ID ", 2
@@ -21554,7 +21554,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $setup.updateOrdering('title');
     })
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["leading-4 font-medium text-gray-500 uppercase tracking-wider", {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider", {
       'font-bold text-blue-600': $setup.orderColumn === 'title'
     }])
   }, " Title ", 2
@@ -21581,7 +21581,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $setup.updateOrdering('created_at');
     })
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["leading-4 font-medium text-gray-500 uppercase tracking-wider", {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider", {
       'font-bold text-blue-600': $setup.orderColumn === 'created_at'
     }])
   }, " Created at ", 2

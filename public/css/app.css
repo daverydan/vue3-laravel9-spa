@@ -682,17 +682,8 @@ select {
 .-mr-2 {
   margin-right: -0.5rem;
 }
-.ml-5 {
-  margin-left: 1.25rem;
-}
-.ml-0 {
-  margin-left: 0px;
-}
 .block {
   display: block;
-}
-.inline-block {
-  display: inline-block;
 }
 .flex {
   display: flex;
@@ -1139,12 +1130,6 @@ select {
 }
 .opacity-100 {
   opacity: 1;
-}
-.opacity-5 {
-  opacity: 0.05;
-}
-.opacity-10 {
-  opacity: 0.1;
 }
 .opacity-25 {
   opacity: 0.25;
