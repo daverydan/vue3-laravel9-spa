@@ -21742,7 +21742,8 @@ __webpack_require__.r(__webpack_exports__);
 
     var _usePosts = (0,_composables_posts__WEBPACK_IMPORTED_MODULE_1__["default"])(),
         posts = _usePosts.posts,
-        getPosts = _usePosts.getPosts;
+        getPosts = _usePosts.getPosts,
+        deletePost = _usePosts.deletePost;
 
     var _useCategories = (0,_composables_categories__WEBPACK_IMPORTED_MODULE_2__["default"])(),
         categories = _useCategories.categories,
@@ -21765,6 +21766,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       posts: posts,
       getPosts: getPosts,
+      deletePost: deletePost,
       categories: categories,
       search_category: search_category,
       orderColumn: orderColumn,
@@ -22259,8 +22261,9 @@ var _hoisted_22 = {
   "class": "px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900"
 };
 
-var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Edit ");
+var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Edit");
 
+var _hoisted_24 = ["onClick"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
 
@@ -22383,7 +22386,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           id: post.id
         }
       },
-      "class": "bg-gray-100 px-2 py-1 text-xs rounded-sm hover:bg-gray-200 transition duration-200 ease-in-out uppercase tracking-wide"
+      "class": "bg-gray-100 px-2 py-1 text-xs rounded-sm hover:bg-gray-200 transition duration-200 ease-in-out uppercase tracking-wide mr-1"
     }, {
       "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
         return [_hoisted_23];
@@ -22393,7 +22396,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
     }, 1032
     /* PROPS, DYNAMIC_SLOTS */
-    , ["to"])])]);
+    , ["to"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+      onClick: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
+        return $setup.deletePost(post.id);
+      }, ["prevent"]),
+      href: "#",
+      "class": "bg-red-100 px-2 py-1 text-xs rounded-sm hover:bg-red-200 transition duration-200 ease-in-out uppercase tracking-wide"
+    }, " Delete ", 8
+    /* PROPS */
+    , _hoisted_24)])]);
   }), 128
   /* KEYED_FRAGMENT */
   ))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Pagination, {
@@ -22852,6 +22863,56 @@ function usePosts() {
     };
   }();
 
+  var deletePost = /*#__PURE__*/function () {
+    var _ref5 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5(postId) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
+        while (1) {
+          switch (_context5.prev = _context5.next) {
+            case 0:
+              swal({
+                title: "Are you sure?",
+                text: "You won't be able to revert this action.",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Delete",
+                confirmButtonColor: "#ef4444",
+                timer: 20000,
+                timerProgressBar: true,
+                reverseButtons: true
+              }).then(function (result) {
+                if (result.isConfirmed) {
+                  axios["delete"]("/api/posts/" + postId).then(function () {
+                    getPosts();
+                    swal({
+                      icon: "success",
+                      title: "Post Deleted",
+                      timer: 1500,
+                      showConfirmButton: false
+                    });
+                  })["catch"](function (error) {
+                    swal({
+                      icon: "error",
+                      title: "Something went wrong.",
+                      timer: 2000,
+                      showConfirmButton: false
+                    });
+                  });
+                }
+              });
+
+            case 1:
+            case "end":
+              return _context5.stop();
+          }
+        }
+      }, _callee5);
+    }));
+
+    return function deletePost(_x4) {
+      return _ref5.apply(this, arguments);
+    };
+  }();
+
   return {
     posts: posts,
     post: post,
@@ -22859,6 +22920,7 @@ function usePosts() {
     getPost: getPost,
     storePost: storePost,
     updatePost: updatePost,
+    deletePost: deletePost,
     validationErrors: validationErrors,
     isLoading: isLoading
   };

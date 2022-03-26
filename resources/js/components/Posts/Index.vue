@@ -223,10 +223,16 @@
                                     name: 'posts.edit',
                                     params: { id: post.id },
                                 }"
-                                class="bg-gray-100 px-2 py-1 text-xs rounded-sm hover:bg-gray-200 transition duration-200 ease-in-out uppercase tracking-wide"
+                                class="bg-gray-100 px-2 py-1 text-xs rounded-sm hover:bg-gray-200 transition duration-200 ease-in-out uppercase tracking-wide mr-1"
+                                >Edit</router-link
                             >
-                                Edit
-                            </router-link>
+                            <a
+                                @click.prevent="deletePost(post.id)"
+                                href="#"
+                                class="bg-red-100 px-2 py-1 text-xs rounded-sm hover:bg-red-200 transition duration-200 ease-in-out uppercase tracking-wide"
+                            >
+                                Delete
+                            </a>
                         </td>
                     </tr>
                 </tbody>
@@ -262,7 +268,7 @@ export default {
         // const search_global = ref("");
         const orderColumn = ref("created_at");
         const orderDirection = ref("desc");
-        const { posts, getPosts } = usePosts();
+        const { posts, getPosts, deletePost } = usePosts();
         const { categories, getCategories } = useCategories();
 
         onMounted(() => {
@@ -289,6 +295,7 @@ export default {
         return {
             posts,
             getPosts,
+            deletePost,
             categories,
             search_category,
             orderColumn,

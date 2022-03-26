@@ -108,6 +108,42 @@ export default function usePosts() {
             .finally(() => (isLoading.value = true));
     };
 
+    const deletePost = async (postId) => {
+        swal({
+            title: "Are you sure?",
+            text: "You won't be able to revert this action.",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Delete",
+            confirmButtonColor: "#ef4444",
+            timer: 20000,
+            timerProgressBar: true,
+            reverseButtons: true,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axios
+                    .delete("/api/posts/" + postId)
+                    .then(() => {
+                        getPosts();
+                        swal({
+                            icon: "success",
+                            title: "Post Deleted",
+                            timer: 1500,
+                            showConfirmButton: false,
+                        });
+                    })
+                    .catch((error) => {
+                        swal({
+                            icon: "error",
+                            title: "Something went wrong.",
+                            timer: 2000,
+                            showConfirmButton: false,
+                        });
+                    });
+            }
+        });
+    };
+
     return {
         posts,
         post,
@@ -115,6 +151,7 @@ export default function usePosts() {
         getPost,
         storePost,
         updatePost,
+        deletePost,
         validationErrors,
         isLoading,
     };
