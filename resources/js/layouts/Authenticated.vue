@@ -40,6 +40,14 @@
                             </router-link>
                         </div>
                     </div>
+                    <div class="flex items-center">
+                        <div>
+                            <div>Hi, {{ user.name }}</div>
+                            <div class="text-sm text-gray-500">
+                                {{ user.email }}
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -72,7 +80,14 @@
 </template>
 
 <script>
+import useAuth from "../composables/auth";
+
 export default {
+    setup() {
+        const { user } = useAuth();
+        return { user };
+    },
+
     computed: {
         currentPageTitle() {
             return this.$route.meta.title;
