@@ -243,6 +243,7 @@
                             class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900"
                         >
                             <router-link
+                                v-if="can('posts.update')"
                                 :to="{
                                     name: 'posts.edit',
                                     params: { id: post.id },
@@ -251,6 +252,7 @@
                                 >Edit</router-link
                             >
                             <a
+                                v-if="can('posts.delete')"
                                 href="#"
                                 @click.prevent="deletePost(post.id)"
                                 class="px-2 py-1 bg-red-100 hover:bg-red-200 rounded-sm transition duration-200 ease-in-out ml-2"
@@ -275,6 +277,7 @@
 import { ref, onMounted, watch } from "vue";
 import usePosts from "../../composables/posts";
 import useCategories from "../../composables/categories";
+import { useAbility } from "@casl/vue";
 export default {
     setup() {
         const search_category = ref("");
@@ -286,10 +289,13 @@ export default {
         const orderDirection = ref("desc");
         const { posts, getPosts, deletePost } = usePosts();
         const { categories, getCategories } = useCategories();
+        const { can } = useAbility();
+
         onMounted(() => {
             getPosts();
             getCategories();
         });
+
         const updateOrdering = (column) => {
             orderColumn.value = column;
             orderDirection.value =
@@ -305,6 +311,7 @@ export default {
                 orderDirection.value
             );
         };
+
         watch(search_category, (current, previous) => {
             getPosts(
                 1,
@@ -315,6 +322,7 @@ export default {
                 search_global.value
             );
         });
+
         watch(search_id, (current, previous) => {
             getPosts(
                 1,
@@ -325,6 +333,7 @@ export default {
                 search_global.value
             );
         });
+
         watch(search_title, (current, previous) => {
             getPosts(
                 1,
@@ -335,6 +344,7 @@ export default {
                 search_global.value
             );
         });
+
         watch(search_content, (current, previous) => {
             getPosts(
                 1,
@@ -345,6 +355,7 @@ export default {
                 search_global.value
             );
         });
+
         watch(search_global, (current, previous) => {
             getPosts(
                 1,
@@ -355,6 +366,7 @@ export default {
                 current
             );
         });
+
         return {
             posts,
             getPosts,
@@ -368,6 +380,7 @@ export default {
             orderColumn,
             orderDirection,
             updateOrdering,
+            can,
         };
     },
 };
