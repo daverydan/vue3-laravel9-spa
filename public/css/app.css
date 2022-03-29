@@ -724,6 +724,12 @@ select {
 .h-6 {
   height: 1.5rem;
 }
+.h-screen {
+  height: 100vh;
+}
+.h-full {
+  height: 100%;
+}
 .min-h-screen {
   min-height: 100vh;
 }
@@ -750,6 +756,9 @@ select {
 }
 .w-6 {
   width: 1.5rem;
+}
+.w-screen {
+  width: 100vw;
 }
 .min-w-full {
   min-width: 100%;
@@ -998,6 +1007,18 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(254 226 226 / var(--tw-bg-opacity));
 }
+.bg-red-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(220 38 38 / var(--tw-bg-opacity));
+}
+.bg-red-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(252 165 165 / var(--tw-bg-opacity));
+}
+.bg-red-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 202 202 / var(--tw-bg-opacity));
+}
 .fill-current {
   fill: currentColor;
 }
@@ -1109,6 +1130,10 @@ select {
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
+}
+.text-7xl {
+  font-size: 4.5rem;
+  line-height: 1;
 }
 .font-medium {
   font-weight: 500;
@@ -1507,6 +1532,15 @@ body.swal2-toast-shown .swal2-container.swal2-bottom-end,body.swal2-toast-shown 
 .hover\:text-gray-900:hover {
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity));
+}
+.hover\:opacity-80:hover {
+  opacity: 0.8;
+}
+.hover\:opacity-75:hover {
+  opacity: 0.75;
+}
+.hover\:opacity-70:hover {
+  opacity: 0.7;
 }
 .focus\:z-10:focus {
   z-index: 10;

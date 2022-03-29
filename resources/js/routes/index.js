@@ -7,6 +7,7 @@ import Login from "../components/Login";
 import PostsIndex from "../components/Posts/Index";
 import PostsCreate from "../components/Posts/Create";
 import PostsEdit from "../components/Posts/Edit";
+import PageNotFound from "../components/Pages/PageNotFound";
 
 function auth(to, from, next) {
     if (JSON.parse(localStorage.getItem("loggedIn"))) {
@@ -52,6 +53,8 @@ const routes = [
             },
         ],
     },
+    // https://router.vuejs.org/guide/migration/#removed-star-or-catch-all-routes
+    { path: "/:pathMatch(.*)*", name: "not-found", component: PageNotFound },
 ];
 
 export default createRouter({
