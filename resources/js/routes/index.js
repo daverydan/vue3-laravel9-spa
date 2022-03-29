@@ -8,8 +8,17 @@ import PostsIndex from "../components/Posts/Index";
 import PostsCreate from "../components/Posts/Create";
 import PostsEdit from "../components/Posts/Edit";
 
+function auth(to, from, next) {
+    if (JSON.parse(localStorage.getItem("loggedIn"))) {
+        next();
+    }
+    next("/login");
+}
+
 const routes = [
     {
+        path: "/",
+        redirect: { name: "login" },
         component: GuestLayout,
         children: [
             {
@@ -21,6 +30,7 @@ const routes = [
     },
     {
         component: AuthenticatedLayout,
+        beforeEnter: auth, // function above
         children: [
             {
                 path: "/posts",
