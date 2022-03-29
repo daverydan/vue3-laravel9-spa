@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ref, reactive } from "vue";
+import { ref, reactive, inject } from "vue";
 import { useRouter } from "vue-router";
 
 const user = reactive({
@@ -11,6 +11,7 @@ export default function useAuth() {
     const processing = ref(false);
     const validationErrors = ref({});
     const router = useRouter();
+    const swal = inject("$swal");
     const loginForm = reactive({
         email: "",
         password: "",
@@ -49,6 +50,26 @@ export default function useAuth() {
         });
     };
 
+    const logout = async () => {
+        if (processing.value) return;
+
+        processing.value = true;
+
+        axios
+            .post("logout")
+            .then((response) => router.push({ name: "login" }))
+            .catch((error) => {
+                swal({
+                    icon: "error",
+                    title: error.response.status,
+                    text: error.response.statusText,
+                });
+            })
+            .finally(() => {
+                processing.value = false;
+            });
+    };
+
     return {
         loginForm,
         validationErrors,
@@ -56,5 +77,6 @@ export default function useAuth() {
         submitLogin,
         user,
         getUser,
+        logout,
     };
 }

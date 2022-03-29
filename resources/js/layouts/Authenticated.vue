@@ -48,6 +48,15 @@
                             </div>
                         </div>
                     </div>
+                    <button
+                        @click="logout"
+                        type="button"
+                        class="inline-flex items-center px-4 py-0 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150 ml-4"
+                        :class="{ 'opacity-25': processing }"
+                        :disabled="processing"
+                    >
+                        Log out
+                    </button>
                 </div>
             </div>
         </nav>
@@ -84,8 +93,8 @@ import useAuth from "../composables/auth";
 
 export default {
     setup() {
-        const { user } = useAuth();
-        return { user };
+        const { user, processing, logout } = useAuth();
+        return { user, processing, logout };
     },
 
     computed: {
